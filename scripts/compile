@@ -1,1 +1,1 @@
-find . -name 'notes.tex' -exec latexmk -pdf -cd -quiet {} \; -exec latexmk -c -quiet {} \;
+find . -name 'notes.tex' -exec latexmk -pdf -cd -quiet {} \;

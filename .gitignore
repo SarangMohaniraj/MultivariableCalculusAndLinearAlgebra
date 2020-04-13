@@ -90,17 +90,17 @@ acs-*.bib
 *.end
 *.?end
 # *.[1-9] # messing up .gitignore
-*.[1-9][0-9]
-*.[1-9][0-9][0-9]
-*.[1-9]R
-*.[1-9][0-9]R
-*.[1-9][0-9][0-9]R
-*.eledsec[1-9]
-*.eledsec[1-9]R
-*.eledsec[1-9][0-9]
-*.eledsec[1-9][0-9]R
-*.eledsec[1-9][0-9][0-9]
-*.eledsec[1-9][0-9][0-9]R
+# *.[1-9][0-9] # also messing up
+# *.[1-9][0-9][0-9] # just gonna comment the rest of these out in case, there aren't any files that would match this condition anyway
+# *.[1-9]R
+# *.[1-9][0-9]R
+# *.[1-9][0-9][0-9]R
+# *.eledsec[1-9]
+# *.eledsec[1-9]R
+# *.eledsec[1-9][0-9]
+# *.eledsec[1-9][0-9]R
+# *.eledsec[1-9][0-9][0-9]
+# *.eledsec[1-9][0-9][0-9]R
 
 # glossaries
 *.acn

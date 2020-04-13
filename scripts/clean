@@ -1,0 +1,1 @@
+find . \( -type f -name '*.bak' -or -type f -name '*.log' -or -type f -name '*.aux' -or -type f -name '*.out' -or -type f -name '*.fls' -or -type f -name '*.fdb_latexmk' -or -type f -name '*.synctex.gz' -or -type f -name '*.toc' \) -exec rm -v {} \;
