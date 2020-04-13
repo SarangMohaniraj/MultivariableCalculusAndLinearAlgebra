@@ -1,0 +1,25 @@
+\documentclass[oneside]{book}
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newtheorem{theorem}{THEOREM}[section]
+
+\usepackage{tocloft}
+\setlength\cftsecnumwidth{3.5em}
+
+\begin{document}
+  \setcounter{part}{1}
+  \setcounter{chapter}{0}
+  \setcounter{section}{0}
+  \input{source.tex}
+\end{document}

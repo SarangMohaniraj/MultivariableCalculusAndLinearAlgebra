@@ -3,6 +3,7 @@ MCLA notes
 
 
 ## Scripts
+All of these scripts should be run from the root project directory.
 
 #### Make New Sections
 
@@ -10,7 +11,7 @@ MCLA notes
 scripts/make <em>course</em> <em>chapter</em> <em>section</em>
 </pre>
 
-The course must match the directory name. For example, to create Section 17.2 of Multivariable Calculus, run from the the root project directory.
+The course must match the directory name. This is an example of how to create Section 17.2 of Multivariable Calculus.
 ```
 scripts/make MultivariableCalculus 17 2
 ```
@@ -26,3 +27,5 @@ Although this script is also recursive, it is not as intensive as the previous s
 ```
 scripts/clean
 ```
+
+If you are using LaTeXTools on Sublime Text 3, you can just use <kbd>ctrl/cmd+l</kbd>, <kbd>backspace</kbd> from a .tex file to clean all auxiliary files in the current directory and its subdirectories. This means that if you run this command from the root project directory, it will clean up auxiliary files.

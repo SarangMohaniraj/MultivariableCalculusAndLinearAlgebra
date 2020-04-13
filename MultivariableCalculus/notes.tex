@@ -13,8 +13,11 @@
 
 \newtheorem{theorem}{THEOREM}[section]
 
-\date{}
+\usepackage{tocloft}
+\setlength\cftsecnumwidth{3.5em}
+
 \begin{document}
+  \setcounter{part}{0}
   \setcounter{chapter}{10}
   \setcounter{section}{0}
   \input{source.tex}
