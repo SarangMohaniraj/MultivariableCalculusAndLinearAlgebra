@@ -1,6 +1,8 @@
 \documentclass[oneside]{book}
 
+\usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{graphicx}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -11,7 +13,14 @@
     urlcolor=black
 }
 
-\newtheorem{theorem}{THEOREM}[section]
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
 
 \usepackage{tocloft}
 \setlength\cftsecnumwidth{3.5em}

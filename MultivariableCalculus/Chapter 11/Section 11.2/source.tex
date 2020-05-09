@@ -1,1 +1,79 @@
 \section{Calculus with Parametric Curves}
+  We will mainly solve problems involving tangents, area, arc length, and surface area.
+
+  \subsection*{Tangents}
+    In the previous section, we saw that some curves defined by parametric equations $ x = f(t) $ and $ y = g(t) $ can also be expressed, by eliminating the parameter, in the form $ y = F(x) $. If we substitute $ x = f(t) $ and $ y = g(t) $ in the equation $ y = F(x) $, we get
+      $$ g(t) = F(f(t)) $$
+    If g, f, and F are differentiable, the Chain Rule gives
+      $$ g'(t) = F'(f(t))f'(t) = F'(x)f'(t) $$
+    If $ f'(t) \neq 0 $, we can solve for $F'(x)$:
+    \begin{definition}
+      The slope of the tangent to the parametric curve $y=F(x)$ is $F'(x)$.
+      $$ F'(x) = \frac{g'(t)}{f'(t)} $$
+    \end{definition}
+    This enables us to find tangents to parametric curves without having to eliminate the parameter. We can rewrite the
+    previous equation in an easily remembered form.
+    \begin{definition}
+      We can use this to find tangents to parametric curves without having to eliminate the parameter.
+      $$ \frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} \ \ \text{if} \ \ \frac{dx}{dt} \neq 0$$
+      The curve has a
+      \begin{itemize}
+        \item horizontal tangent when $ \frac{dy}{dt} = 0 $ (provided that $\frac{dx}{dt} \neq 0$)
+        \item vertical tangent when $ \frac{dx}{dt} = 0 $ (provided that $\frac{dy}{dt} \neq 0$)
+      \end{itemize}
+      This is useful when sketching parametric curves.
+    \end{definition}
+    \begin{definition}
+      We can also find $ \frac{d^2 y}{dx^2}$
+      $$ \frac{d^2 y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{\frac{dx}{dt}}$$
+    \end{definition}
+    \begin{example}
+      A curve C is defined by the parametric equations $ {x=t^2 ,\ y=t^3 -3t }$.
+      \begin{enumerate}
+        \item Show that $C$ has two tangents at the point (3,0) and find their equations.
+        \item Find the points on $C$ where the tangent is horizontal or vertical.
+        \item Determine where the curve is concave upward or downward.
+      \end{enumerate}
+    \end{example}
+    \begin{solution}
+      A curve C is defined by the parametric equations $ x=t^2 ,\ y=t^3 -3t $.
+      \begin{enumerate}
+        \item Rewrite $ y=t^3 -3t = t(t^2 -3) = 0 $ when $t=0$ or $t= \pm\sqrt{3} $. This indicates that C intersects itself at (3.0).
+        \begin{align*}
+          \frac{dy}{dx} &= \frac{dy/dt}{dx/dt} = \frac{3t^2 - 3}{2t} = \frac{3}{2}\left(t-\frac{1}{t}\right) \\
+          t=\pm\sqrt{3} \rightarrow dy/dx &= \pm 6/(2\sqrt{3})
+        \end{align*}
+          so the equations of the tangents at (3,0) are
+            $$ y = \sqrt{3}(x-3) \ \ \ and \ \ \ y = -\sqrt{3}(x-3) $$
+        \item C has a horizontal tangent when $dy/dx=0$. In other words, when $dy/dt=0$ and $dx/dt \neq 0$. $dy/dt=3t^2 - 3 = 0$ when $t^2 = 1$ so $t=\pm 1$. This means there are horizontal tangents on C at (1,-2) and (1,2). C has a vertical tangent when $dx/dt = 2t = 0$, so $t= 0$. This means C has a vertical tangent at (0,0).
+        \item To determine concavity we calculate the second derivative:
+          $$ \frac{d^2 y}{dx^2} = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{\frac{dx}{dt}} = \frac{\frac{3}{2}\left(1+\frac{1}{t^2}\right)}{2t} = \frac{3(t^2 + 1)}{4t^3} $$
+          The curve is concave upward when $t>0$ and concave downward when $t<0$.
+      \end{enumerate}
+    \end{solution}
+
+  \subsection*{Area}
+    We already know that area under a curve $y=F(x)$ from $a$ to $b$ is $A=\int_{a}^{b} F(x)dx$. We can apply this to parametric equations using the Substitution Rule for Definite Integrals.
+    \begin{definition}
+      If the curve $C$ is given by parametric equations $x=f(t)$ and $y=g(t)$ and $t$ increases from $\alpha$ to $\beta$,
+        $$ A=\int_{a}^{b} ydx = \int_{\alpha}^{\beta} g(t)f'(t)dt $$
+      (Switch $\alpha$ to $\beta$ if the point on $C$ at $\beta$ is more left than $\alpha$.
+    \end{definition}
+    \begin{example}
+      Find the area under one arch of the cycloid ${x=r(\theta-\sin\theta),\ y=r(1-\cos\theta)}.$
+    \end{example}
+    \begin{solution}
+      One arch of the cycloid is given by $0 \leq \theta \leq 2\pi$. Using the Substitution Rule with $y=r(1-\cos\theta)$ and $dx=r(1-\cos\theta)d\theta$, we have
+      \begin{align*}
+        A &= \int_{0}^{2\pi} ydx = A=\int_{0}^{2\pi} r(1-\cos\theta)r(1-\cos\theta)d\theta \\
+          &= r^2 \int_{0}^{2\pi} (1-\cos\theta)^2 d\theta = r^2 \int_{0}^{2\pi} (1 - 2 \cos\theta + \cos^2 \theta) d\theta \\
+          &= r^2 \int_{0}^{2\pi} \left[1 - 2 \cos\theta + \frac{1}{2}(1+\cos 2\theta)\right] d\theta \\
+          &= r^2 \left[ \frac{3}{2}\theta - 2 \sin\theta + \frac{1}{4}\sin2\theta \right]_{0}^{2\pi} \\
+          &= r^2 \left( \frac{3}{2} \cdot 2\pi \right) = 3\pi r^2
+      \end{align*}
+    \end{solution}
+
+  \subsection*{Arc Length}
+
+
+  \subsection*{Surface Area}
