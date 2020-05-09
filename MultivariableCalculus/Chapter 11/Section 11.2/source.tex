@@ -24,9 +24,27 @@
       This is useful when sketching parametric curves.
     \end{definition}
     \begin{definition}
-      We can also find $ \frac{d^2 y}{dx^2}$
+      We can also find $ \frac{d^2 y}{dx^2}$ by replacing $y$ with $\frac{dy}{dx}$
       $$ \frac{d^2 y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{\frac{dx}{dt}}$$
     \end{definition}
+    \begin{minipage}{\linewidth}
+      \begin{proof}
+        Find $\frac{dy}{dx}$ and $\frac{d^2 y}{dx^2}$ considering $y(t)$ and $g(t)$.
+        \begin{enumerate}
+          \item \begin{equation*}
+            \text{Chain rule: } \frac{dy}{dt} = \frac{dy}{dx}\frac{dx}{dt} \implies \frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} \ \ \ (\implies \text{means "implies"})
+          \end{equation*}
+          \item \begin{align*}
+            \text{Chain rule: } \frac{d}{dt}\left(\frac{dy}{dx}\right) &= \left(\frac{d}{dx}\frac{dy}{dx}\right)\frac{dx}{dt} = \frac{d^2 y}{dx^2}\frac{dx}{dt} \\
+            \text{Substitute: } \frac{d}{dt}\left(\frac{dy}{dx}\right) &= \frac{d}{dt}\left(\frac{\frac{dy}{dt}}{\frac{dx}{dt}}\right) \\
+            \text{Quotient rule: } &= \frac{\frac{d^2 y}{dt^2}\frac{d^x}{dt} - \frac{dy}{dt}\frac{d^2 x}{dt^2}}{\left(\frac{dx}{dt}\right)^2} \\
+            \intertext{Set equation from line 1 and line 3 equal and divide both sides by $\frac{dx}{dt}$} \\
+            \frac{d^2 y}{dx^2} &= \frac{\frac{d^2 y}{dt^2}\frac{d^x}{dt} - \frac{dy}{dt}\frac{d^2 x}{dt^2}}{\left(\frac{dx}{dt}\right)^2 \left(\frac{dx}{dt}\right)} \\
+            &= \frac{\frac{d^2 y}{dt^2}\frac{d^x}{dt} - \frac{dy}{dt}\frac{d^2 x}{dt^2}}{\left(\frac{dx}{dt}\right)^3}
+          \end{align*}
+        \end{enumerate}
+      \end{proof}
+    \end{minipage}
     \begin{example}
       A curve C is defined by the parametric equations $ {x=t^2 ,\ y=t^3 -3t }$.
       \begin{enumerate}
@@ -74,6 +92,69 @@
     \end{solution}
 
   \subsection*{Arc Length}
+    We already know how to find length $L$ of a curve $C$ given in the form ${y=F(x)}$, $a \leq x \leq b$.
+    \begin{definition}
+      If $F'$ is continuous, then $$L=\int_{a}^{b}\sqrt{1+\left(\frac{dy}{dx}\right)^2 dx}$$
+    \end{definition}
+    If $C$ can describe the parametric equations $x=f(t)$ and $y=g(t)$, $\alpha \leq t \leq \beta$, where $dx/dt = f'(t)>0$. Using the substitution rule, we obtain
+      $$L=\int_{a}^{b}\sqrt{1+\left(\frac{dy}{dx}\right)^2 dx} = \int_{\alpha}^{\beta}\sqrt{1+\left(\frac{dy/dt}{dx/dt}\right)^2 \frac{dx}{dt} dt}$$
+    Since $dx/dt > 0$, we have
+    \begin{theorem}
+      If a curve $C$ is described by the parametric equations $x=f(t)$, $y=g(t)$, $\alpha \leq t \leq \beta$, where $f'$ and $g'$ are continuous on $[\alpha,\beta]$ and $C$ is traversed exactly once as $t$ increases from $\alpha$ to $\beta$, then the length of $C$ is
+        $$L = \int_{\alpha}^{\beta}\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt$$
+    \end{theorem}
+    This is consistent with the general formula $L=\int ds$ and ${(ds^2)=(dx^2)+(dy^2)}$.
+    \begin{proof}\let\qed\relax
+      Prove the length formula of a parametric curve
+      \begin{align*}
+        \overrightarrow{ds} &= \overrightarrow{i}dx + \overrightarrow{j}dy\\
+        ds^2 &= \overrightarrow{ds} \cdot \overrightarrow{ds} = \left(\overrightarrow{i}dx+\overrightarrow{j}dy\right) \cdot \left(\overrightarrow{i}dx+\overrightarrow{j}dy\right) = dx^2 + dy^2 \\
+        ds &= \sqrt{dx^2 + dy^2} = \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt \\
+        L &= \int_{\alpha}^{\beta} ds = \int_{\alpha}^{\beta}\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt
+      \end{align*}
+    \end{proof}
+    \begin{example}
+      Find the length of the unit circle as (x,y) moves both once and twice around the circle.
+    \end{example}
+    \begin{solution}
+      For one traversal around the unit circle,
+      $$ x=\cos t \ \ \ y=\sin t \ \ \ 0\leq t\leq 2\pi$$
+      so $dx/dt = -\sin t$ and $dy/dt = \cos t$
+      \begin{align*}
+        L &= \int_{0}^{2\pi}\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt = \int_{0}^{2\pi}\sqrt{\sin^2 t + \cos^2 t}\ dt \\
+          &= \int_{0}^{2\pi}dt = 2\pi
+      \end{align*}
 
-
+      For two traversals around the unit circle,
+      $$ x=\sin 2t \ \ \ y=\cos 2t \ \ \ 0\leq t\leq 2\pi$$
+      so $dx/dt = 2\cos 2t$ and $dy/dt = -2\sin 2t$
+      \begin{align*}
+        L &= \int_{0}^{2\pi}\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt = \int_{0}^{2\pi}\sqrt{4\cos^2 2t + 4\sin^2 2t}\ dt
+          &= \int_{0}^{2\pi}2\ dt = 4\pi
+      \end{align*}
+    \end{solution}
   \subsection*{Surface Area}
+    We can also adapt the surface area formula to a parametric curve.
+    \begin{definition}
+      If a curve $C$ is described by the parametric equations $x=f(t)$, $y=g(t)$, $\alpha \leq t \leq \beta$, is rotated about the \textbf{x-axis}, where $f'$,$g'$ are continuous and $g(t)\geq 0$, the surface area is
+        $$ S=\int_{\alpha}^{\beta} 2\pi y \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt  $$
+      If the curve C is rotated about the \textbf{y-axis}, the surface area is
+        $$ S=\int_{\alpha}^{\beta} 2\pi x \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt  $$
+      The generic formulas ${S=\int 2\pi y\ ds}$ for rotation about the x-axis and ${S=\int 2\pi x\ ds}$ for rotation about the y-axis are still valid, but for parametric curves we use
+        $$ds = \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2} dt$$
+    \end{definition}
+    \begin{example}
+      Show that the surface area of a sphere of radius $r$ is $4\pi r^2$
+    \end{example}
+    \begin{solution}
+      The sphere is obtained by rotating the semicircle
+        $$x=r\cos t \ \ \ y=r\sin t \ \ \ 0 \leq t \leq \pi$$
+      about the x-axis.
+      \begin{align*}
+        S &= \int_{0}^{\pi} 2\pi r\sin t\sqrt{(-r\sin t)^2 + (r\cos t)^2}\ dt \\
+          &= 2\pi\int_{0}^{\pi} r \sin t\sqrt{r^2 (sin^2 t + \cos^2 t)}\ dt \\
+          &= 2\pi\int_{0}^{\pi} r \sin t \cdot r\ dt = 2\pi r^2\int_{0}^{\pi}\sin t\ dt \\
+          &= 2\pi r^2 (-\cos t)]_{0}^{\pi} = 4\pi r^2
+      \end{align*}
+    \end{solution}
+
