@@ -1,1 +1,150 @@
 \section{Series}
+  If we try to add the terms of an infinite sequence ${a_n}_{n=1}^{\infty}$ we get the expression of the form
+  $$a_1+a_2+a_3+\cdots+a_n+\cdots$$
+  which is called an \textbf{infinite series} (or just a \textbf{series}) and is denoted by the symbol
+  $$\sum_{n=1}^{\infty}a_n \quad\text{or}\quad \sum a_n$$
+  We also consider the \textbf{partial sums}
+  \begin{align*}
+    s_1 &= a_1 \\
+    s_2 &= a_1 +a_2 \\
+    s_3 &= a_1 +a_2 +a_3 \\
+    s_4 &= a_1 +a_2 +a_3 +a_4 \\
+    s_n &= a_1 +a_2 +a_3 + \cdots + a_n = \sum_{i=1}^{\infty}a_i
+  \end{align*}
+  These partial sums form a new sequence $\{s_n\}$, which may or may not have a limit. If the $\lim_{n\to\infty}s_n=s$ exists (as a finite number), then we call it the sum of the infinite series $\sum a_n$.
+  \begin{definition}
+    Given a series $\sum_{n=1}^{\infty}a_n= a_1 +a_2 +a_3 + \cdots$, let $s_n$ denote its $n$th partial sum:
+    $$s_n = \sum_{i=1}^{\infty}a_i = a_1 +a_2 + \cdots + a_n$$
+    If the sequence $\{s_n\}$ is convergent and $\lim_{n\to\infty}s_n=s$ exists as a real number, then the series $\sum a_n$ is \textbf{convergent} and we write
+    $$s_n = a_1 +a_2 + \cdots + a_n = s \quad\text{or}\quad \sum_{n=1}^{\infty} a_n = s$$
+    The number $s$ is the \textbf{sum} of the series. Otherwise, the series is \textbf{divergent}.
+  \end{definition}
+  Notice that $$\sum_{n=1}^{\infty} a_n = \lim_{n\to\infty}\sum_{i=1}^{\infty}a_i$$
+  \begin{minipage}{\linewidth}
+    \begin{definition}[\textbf{Geometric Series}]
+      The \textbf{geometric series}
+      $$ \sum_{n=1}^{\infty}ar^{n-1} = a + ar + ar^2 + \cdots$$
+      is convergent if $|r|<1$ and its sum is
+      $$\sum_{n=1}^{\infty}ar^{n-1} = \frac{a}{1-r} \qquad |r|<1$$
+      If $|r|\geq 1$, the geometric series is divergent.
+    \end{definition}
+    ``The sum of a convergent geometric series is $\frac{\text{first term}}{1-\text{common ratio}}$''.
+  \end{minipage}
+  \begin{proof}\let\qed\relax
+    $$a + ar + ar^2 + ar^3 + \cdots + ar^{n-1} + \cdots = \sum_{n=1}^{\infty}ar^{n-1}$$
+    Each term is obtained from the preceding one by multiplying it by the \textbf{common ratio} $r$.\par
+    If $r=1$, then $s_n = a+a+\cdots+a=na \to \pm\infty$. Since $\lim_{n\to\infty}\ s_n$ doesn't exist, the geometric series diverges in this case.
+    If $r \neq 1$, then
+    \begin{align*}
+      s_n &= a + ar + ar^2 + \cdots + ar^{n-1} \\
+      rs_n &= \hphantom{a +\ } ar + ar^2 + \cdots + ar^{n-1} + ar^n
+    \end{align*}
+    Subtracting these equations, we get
+    $$s_n-rs_n = a-ar^n$$
+      \begin{definition}[\textbf{Partial Sum of a Geometric Series}]
+        $$s_n = \frac{a(1-r^n)}{1-r}$$
+      \end{definition}
+      If $-1<r<1$, we know that $r^n \to 0$ as $n\to\infty$, so
+      $$\lim_{n\to\infty}s_n =\lim_{n\to\infty}\frac{a(1-r^n)}{1-r} = \frac{a}{1-r}-\frac{a}{1-r}\lim_{n\to\infty}r^n = \frac{a}{1-r}$$
+      Thus, when $|r|<1$, the geometric series is convergent and its sum is $a/(1-r)$.\par
+      If $r\leq -1$ or $r >1$, the sequence $\{r^n\}$ is divergent, so $\lim_{n\to\infty}s_n$ does not exist.
+  \end{proof}
+  \begin{example}
+    Find the sum of the geometric series $$5-\frac{10}{3}+\frac{20}{9}-\frac{40}{27}+\cdots$$
+  \end{example}
+  \begin{solution}
+    The first time is $a=5$ and the common ratio is $r=-\frac{2}{3}$. Since $|r|=\frac{2}{3}<1$, the series is convergent and its sum is
+    $$5-\frac{10}{3}+\frac{20}{9}-\frac{40}{27}+\cdots = \frac{5}{1-(-\frac{2}{3})} = \frac{5}{\frac{5}{3}} = 3$$
+  \end{solution}
+  \begin{example}
+    Write the number $2.3\overline{17} = 2.3171717 \ldots$ as a ratio of integers.
+  \end{example}
+  \begin{solution}
+    $$ 2.3171717 \ldots = 2.3 + \frac{17}{10^3} + \frac{17}{10^5} + \frac{17}{10^7} + \cdots$$
+    After the first term, we have a geometric series with $a=\frac{17}{10^3}$ and $r=1/10^2$.
+    \begin{align*}
+      2.3\overline{17} &= 2.3 + \frac{\frac{17}{10^3}}{1-\frac{1}{10^2}} = 2.3 + \frac{\frac{17}{1000}}{\frac{99}{100}} \\
+      &= \frac{23}{10} + \frac{17}{990} = \frac{1147}{495}
+    \end{align*}
+  \end{solution}
+  \begin{example}
+    Show that the series $ \displaystyle\sum_{n=1}^{\infty} \frac{1}{n(n+1)}$ is convergent and find its sum.
+  \end{example}
+  \begin{solution}
+    THis is not a geometric series, so we go back to the definition of a convergent series and compute the partial sums.
+    $$ s_n = \sum_{i=1}^{\infty} \frac{1}{i(i+1)} = \ + \frac{1}{2\cdot3} + \frac{1}{3\cdot4} + \cdots + \frac{1}{n(n+1)}$$
+    We simplify this expression if we use the \textbf{partial fraction decomposition}
+    $$ \frac{1}{i(i+1)} = \frac{1}{i}-\frac{1}{i+1}$$
+    Thus, we have
+    \begin{align*}
+      s_n &= \sum_{i=1}^{\infty} \frac{1}{i(i+1)} = \sum_{n=1}^{\infty} \left(\frac{1}{i}-\frac{1}{i+1}\right) \\
+          &= \left(1-\frac{1}{2}\right) + \left(\frac{1}{2}-\frac{1}{3}\right) + \left(\frac{1}{3}-\frac{1}{4}\right) + \cdots + \left(\frac{1}{n}-\frac{1}{n+1}\right) \\
+          &= 1- \frac{1}{n+1} \qquad\text{so} \\
+      \lim_{n\to\infty} s_n &= \lim_{n\to\infty} \left(1- \frac{1}{n+1}\right) = 1-0 = 1
+    \end{align*}
+    Therefore, the given series is convergent and
+    $$\sum_{n=1}^{\infty} \frac{1}{n(n+1)}=1$$
+  \end{solution}
+  \begin{definition}
+    The \textbf{harmonic series}
+    $ \displaystyle\sum_{n=1}^{\infty} \frac{1}{n} $
+    is divergent.
+  \end{definition}
+  \begin{theorem}
+    If the series $ \displaystyle\sum_{n=1}^{\infty} a_n$ is convergent, then $\lim\limits_{n\to\infty} a_n = 0$.
+    \\~\\
+    \textsc{Note 1} With any \textit{series} $\sum a_n$, we associate two \textit{sequences}: the sequence $\{s_n\}$ of its partial sums and the sequence $\{a_n\}$ of its terms. If $\sum a_n$ is convergent, then the limit of the sequence $\{s_n\}$ is $s$ (the sum of the series) and the limit of the sequence $\{a_n\}$ is 0.
+    \\~\\
+    \textsc{Note 2} The converse is not true in general. If $\lim\limits_{n\to\infty} a_n = 0$, we cannot conclude that $ \displaystyle\sum_{n=1}^{\infty} a_n$ is convergent.
+  \end{theorem}
+  \begin{proof}\let\qed\relax
+    Let $s_n = \sum_{i=1}^{\infty}a_i = a_1 +a_2 + \cdots + a_n$. Then $a_n = s_n - s_{n-1}$. Since $\sum a_n$ is convergent, the sequence $\{s_n\}$ is convergent. Let $\lim_{n\to\infty} s_n = s$. Since $n-1 \to \infty$ as $n\to\infty$, we also have $\lim_{n\to\infty} s_{n-1} = s$. Therefore
+    \begin{align*}
+      \lim_{n\to\infty} a_n &= \lim_{n\to\infty} (s_n - s_{n-1}) = \lim_{n\to\infty} s_n - \lim_{n\to\infty} s_{n-1} \\
+      &= s-s = 0
+    \end{align*}
+  \end{proof}
+  \begin{definition}[\textbf{The Test for Divergence}]
+    If $\lim\limits_{n\to\infty} a_n$ does not exist or if $\lim\limits_{n\to\infty} a_n \neq 0$, then the series $ \displaystyle\sum_{n=1}^{\infty} a_n$ is divergent.
+  \end{definition}
+  \begin{example}
+    Show that the series $ \displaystyle\sum_{n=1}^{\infty} \frac{n^2}{5n^2+4}$ diverges.
+  \end{example}
+  \begin{solution}
+    $$ \lim_{n\to\infty} a_n = \sum_{n=1}^{\infty} \frac{n^2}{5n^2+4} = \sum_{n=1}^{\infty} \frac{1}{5+4/n^2} = \frac{1}{5} \neq 0$$
+    So the series diverges by the Test for Divergence.
+    \\~\\
+    \textsc{Note 3} If we find that $\lim_{n\to\infty} a_n \neq 0$, we know that $\sum a_n$ is divergent. If we find that $\lim_{n\to\infty} a_n = 0$, we know \textit{nothing} about the convergence or divergence about $\sum a_n$.
+  \end{solution}
+  \begin{theorem}
+    If $\sum a_n$ and $\sum b_n$ are convergent series, then so are the series $\sum ca_n$ (where $c$ is a constant), $\sum (a_n+b_n)$, and $\sum (a_n-b_n)$.
+    \begin{enumerate}
+      \item[(i)] $ \displaystyle\sum_{n=1}^{\infty} ca_n = c\sum_{n=1}^{\infty} a_n$
+      \item[(ii)] $ \displaystyle\sum_{n=1}^{\infty} (a_n + b_n) = \sum_{n=1}^{\infty} a_n + \sum_{n=1}^{\infty} b_n$
+      \item[(iii)] $ \displaystyle\sum_{n=1}^{\infty} (a_n - b_n) = \sum_{n=1}^{\infty} a_n - \sum_{n=1}^{\infty} b_n$
+    \end{enumerate}
+  \end{theorem}
+  \begin{example}
+    Find the sum of the series $\displaystyle\sum_{n=1}^{\infty} \left(\frac{3}{n(n+1)} + \frac{1}{2^n}\right)$.
+  \end{example}
+  \begin{solution}
+    The series $\sum 1/2^n$ is a geometric series with $a=\frac{1}{2}$ and $r=\frac{1}{2}$, so
+    $$ \sum_{n=1}^{\infty} \frac{1}{2^n} = \frac{\frac{1}{2}}{1-\frac{1}{2}} = 1$$
+    We found that
+    $$ \sum_{n=1}^{\infty} \frac{1}{n(n+1)} = 1$$
+    So the given series is convergent and
+    \begin{align*}
+      \sum_{n=1}^{\infty} \left(\frac{3}{n(n+1)} + \frac{1}{2^n}\right) &= 3\sum_{n=1}^{\infty} \frac{1}{n(n+1)} + \sum_{n=1}^{\infty} \frac{1}{2^n} \\
+      &= 3 \cdot 1 + 1 = 4
+    \end{align*}
+    \\~\\
+    \textsc{Note 4} A finite number of terms doesn't affect the convergence or divergence of a series. For instance, suppose that we were able to show that the series $\displaystyle\sum_{n=4}^{\infty} \frac{n}{n^3 + 1}$ is convergent. Since
+    $$ \sum_{n=1}^{\infty} \frac{n}{n^3 + 1} = \frac{1}{2} + \frac{2}{9} + \frac{3}{28} = \sum_{n=4}^{\infty} \frac{n}{n^3 + 1}$$
+    we can conclude that the entire series $\displaystyle\sum_{n=1}^{\infty} \frac{n}{n^3 + 1}$ is convergent.
+    \par
+    Similarly, if it is known that the series $\displaystyle\sum_{n=N+1}^{\infty} a_n$ converges, then the full series
+    $$\sum_{n=1}^{\infty} a_n = \sum_{n=1}^{N} a_n + \sum_{n=N+1}^{\infty} a_n$$
+    is also convergent.
+  \end{solution}
+
+
