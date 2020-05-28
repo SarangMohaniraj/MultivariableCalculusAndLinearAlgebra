@@ -1,1 +1,79 @@
 \section{The Comparison Tests}
+  In comparison tests, the idea is to compare a given series with a series that is know to be convergent or divergent.
+  \begin{definition}[\textbf{The Comparison Test}]
+    Suppose that $\sum a_n$ and $\sum b_n$ are series with positive terms.
+    \begin{enumerate}
+      \item[(i)] If $\sum b_n$ is convergent and $a_n \leq b_n$ for all $n$, then $\sum a_n$ is also convergent.
+      \item[(ii)] If $\sum b_n$ is divergent and $a_n \geq b_n$ for all $n$, then $\sum a_n$ is also divergent.
+    \end{enumerate}
+  \end{definition}
+  In other words,
+  \begin{enumerate}
+    \item[(i)] If we have a series whose terms are \textit{smaller} than those of a known \textit{convergent} series, then our series is also convergent.
+    \item[(ii)] If we have a series whose terms are \textit{larger} than those of a known \textit{divergent} series, then our series is also divergent.
+  \end{enumerate}
+  \begin{proof}\let\qed\relax
+    Let
+      $$ s_n = \sum_{i=1}^{n} a_i \qquad t_n = \sum_{i=1}^{n} b_i \qquad t = \sum_{n=1}^{n} b_n \quad $$
+    \begin{enumerate}
+      \item[(i)] \textbf{Convergence} \\~\\
+      The sequences $\{s_n\}$ and $\{t_n\}$ are increasing $(s_{n+1} = s_n + a_{n+1} \geq s_n)$ because both series have positive terms. Also $t_n \to t$, so $t_n \leq t$ for all $n$. This means that $\{s_n\}$ is increasing and bounded above and therefore converges by the Monotonic Sequence Theorem. Thus, $\sum a_n$ converges.
+      \item[(ii)] \textbf{Divergence} \\~\\
+      If $\sum b_n$ is divergent, then $t\to\infty$ (since $\{t_n\}$ is increasing). BUt $a_i \geq b_i$ so $s_n \geq t_n$. Thus, $s_n \to \infty$. Therefore, $\sum a_n$ diverges.
+  \end{enumerate}
+  \end{proof}
+  \begin{example}
+    Determine whether the series $\displaystyle\sum_{n=1}^{\infty} \frac{5}{2n^2 + 4n + 3}$ converges or diverges.
+  \end{example}
+  \begin{solution}
+    As $n$ gets larger, the dominant term in the denominator is $2n^2$, so we compare the given series with the series $\sum 5/(2n^2)$. Observe that
+    $$ \frac{5}{2n^2 + 4n + 3} < \frac{5}{2n^2} $$
+    because the left side has a bigger denominator. We know the
+    $$ \sum_{n=1}^{\infty} \frac{5}{2n^2} = \frac{5}{2} \sum_{n=1}^{\infty} \frac{1}{n^2} $$
+    is convergent because it is a constant times a $p$-series with $p=2>1$. Therefore,
+    $\displaystyle\sum_{n=1}^{\infty}\frac{5}{2n^2 + 4n + 3}$ is convergent by the Comparison Test.
+  \end{solution}
+  \hphantom{ }\\~\\
+  \textsc{Note} Although the condition $a_n \leq b_n$ for $a_n \geq b_n$ in the Comparison Test is given for all $n$, we only need to verify it for $n \geq N$, where $N$ is some fixed integer, because the convergence of a series is not affected by a finite number.
+  \begin{definition}[\textbf{The Limit Comparison Test}]
+    Suppose that $\sum a_n$ and $\sum b_n$ are series with positive terms. If $$\lim_{n\to\infty}\frac{a_n}{b_n} = c $$
+    where $c$ is a finite number and $c>0$, then either both series converge or diverge.
+  \end{definition}
+  \begin{proof}\let\qed\relax
+    Let $m$ and $M$ be positive numbers such that $m<c<M$. Because $a_n/b_n$ is close to $c$ for a large $n$, there is an integer $N$ such that
+    \begin{align*}
+      m<\frac{a_n}{b_n}<M \quad &\text{when } n>N \quad \text{so} \\
+      mb_n<a_n<Mb_n \quad &\text{when } n>N
+    \end{align*}
+    We can conclude the following:
+    \begin{enumerate}
+      \item[(i)] If $\sum b_n$ converges, so does $\sum Mb_n$, so $\sum a_n$ converges by the Comparison Test.
+      \item[(i)] If $\sum b_n$ diverges, so does $\sum Mb_n$, so $\sum a_n$ diverges by the Comparison Test.
+    \end{enumerate}
+  \end{proof}
+  \begin{example}
+    Test the series $\displaystyle\sum_{n=1}^{\infty} \frac{1}{2^n -1}$ for convergence or divergence.
+  \end{example}
+  \begin{solution}
+    We use the limit comparison test with
+    $$ a_n = \frac{1}{2^n -1} \qquad b_n=\frac{1}{2^n} $$
+    and obtain
+    $$\lim_{n\to\infty}\frac{a_n}{b_n} = \lim_{n\to\infty}\frac{1(2^n-1)}{1/2^n} =  \lim_{n\to\infty}\frac{2^n}{2^n-1} =\lim_{n\to\infty}\frac{1}{1-1/2^n} =1>0$$Since this limit exists and $\sum 1/2^n$ is a convergent geometric series, the given series converges by the Limit Comparison Test.
+  \end{solution}
+  \subsection*{Estimating Sums}
+    We used the Comparison test to series $\sum a_n$ by comparison with $\sum b_n$. We can also use it to estimate the sum by compparing remaindeds. We continue to consider the remainder $R_n$ and consider $T_n$ for the comparison series $\sum b_n$ as the corresponding remainder.
+    \begin{align*}
+      R_n &= s-s_n = a_{n+1} + a_{n+2} + \cdots \\
+      T_n &= t-t_n = b_{n+1} + b_{n+2} + \cdots
+    \end{align*}
+    Since $a_n \leq b_n$, $R_n \leq T_n$.
+    \begin{example}
+      Use the sum of the first 100 terms to approximate the sum of the series $\sum 1/(n^3 + 1)$. Estimate the error involved in this approximation.
+    \end{example}
+    \begin{solution}
+      Since $$\frac{1}{n^3+1} < \frac{1}{n^3} $$
+      the given series is convergent by the Comparison Test. Using the Remainder Estimate for the Integral Test in section 12.3 we found that $$ T_n \leq \int_{n}^{\infty} \frac{1}{x^3}\ dx = \frac{1}{2n^2} $$
+      Therefore, the remainder $R_n$ for the given series satisfies $$R_n \leq T_n \leq \frac{1}{2n^2}$$
+      With $n=100$ we have $$ R_{100} \leq \frac{1}{2(100)^2} = 0.00005 $$
+      Using a calculator, we find that $$ \sum_{n=1}^{\infty} \frac{1}{n^3+1} \approx \sum_{n=1}^{100} \frac{1}{n^3+1} \approx 0.6864538 $$ with error less than 0.00005.
+    \end{solution}
