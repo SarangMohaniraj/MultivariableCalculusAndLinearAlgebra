@@ -1,1 +1,101 @@
 \section{Alternating Series}
+  An \textbf{alternating series} is a series whose terms are alternately positive and negative. Here are two examples:
+  \begin{align*}
+    1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}-\frac{1}{6}+\cdots &= \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} \\
+    -\frac{1}{2}+\frac{2}{3}-\frac{3}{4}+\frac{4}{5}-\frac{5}{6}+\frac{6}{7}-\cdots &= \sum_{n=1}^{\infty} (-1)^{n}\frac{n}{n+1}
+  \end{align*}
+  We see from these examples that the $n$th term of an alternating series is of the form
+  $$ a_n = (-1)^{n-1}b_n \qquad\text{or} a_n = (-1)^{n}b_n $$
+  where $b_n$ is a positive number. (In fact, $b_n = |a_n|$).
+  \begin{definition}[\textbf{The Alternating Series Test}]
+    If the alternating series
+    $$ \sum_{n=1}^{\infty} (-1)^{n-1}b_n = b_1 - b_2 + b_3 - b_4 + b_5 - b_6 + \cdots \qquad (b_n >0)$$ \\
+    satisfies
+    \begin{center}
+      \begin{minipage}{.4\textwidth}
+        \begin{enumerate}
+          \item[(i)] $b_{n+1} \leq b_n$ \quad for all $n$
+          \item[(ii)] $\lim\limits_{n\to\infty} b_n = 0$
+        \end{enumerate}
+      \end{minipage}
+    \end{center}
+    then the series is convergent.
+    \\~\\
+    "The alternating series converges if its terms decrease toward 0 in absolute value".
+  \end{definition}
+  \begin{proof}\let\qed\relax
+    We consider the even and odd partial sums separately.
+      \\~\\ We first consider \textit{even} partial sums:
+      \begin{flalign*}
+        s_2 &= b_1 - b_2 \geq 0 &&\text{since } b_2 \leq b_1 \\
+        s_4 &= s_2 + (b_3 - b_4) \geq s_2 &&\text{since } b_4 \leq b_3 \\
+        \text{In general}\qquad s_{2n} &= s_{2n-2} + (b_{2n-1} - b_{2n}) \geq s_{2n-2} &&\text{since } b_{2n} \leq b_{2n-1}
+      \end{flalign*}
+      $$  0 \leq s_2 \leq s_4 \leq s_6 \leq \cdots \leq s_{2n} \leq \cdots \leqno \hbox{Thus}$$
+      But we can also write
+      $$ s_{2n} = b_1 - (b_2 - b_3) - (b_4 - b_5) - \cdots -  (b_{2n-2} - b_{2n-1}) - b_{2n}$$
+      Every term in brackets is positive, so  $s_{2n} \leq b_1$ for all $n$. Therefore, the sequence $\{s_{2n}\}$ of even partial sums is increasing and bounded above. It is therefore convergent by the Monotonic Sequence Theorem. Let's call this limit $s$:
+      $$ \lim_{n\to\infty} s_{2n} = s$$
+      Next we compute the limit of the \textit{odd} partial sums:
+      \begin{align*}
+        \lim_{n\to\infty} s_{2n+1} &= \lim_{n\to\infty} (s_{2n}+b_{2n+1}) \\
+        &= \lim_{n\to\infty} s_{2n} + \lim_{n\to\infty} b_{2n+1}  \\
+        &= s+0 \\
+        &= s
+      \end{align*}
+      Since both partial sums converge to $s$, we have $ \lim_{n\to\infty} s_{2n} = s$ and so the series is convergent.
+  \end{proof}
+  \begin{example}
+    The alternating harmonic series
+    $$ 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} $$
+    satisfies
+    \begin{center}
+      \begin{minipage}{.6\textwidth}
+        \begin{enumerate}
+          \item[(i)] $b_{n+1} \leq b_n$\qquad because\qquad$\dfrac{1}{n+1}<\dfrac{1}{n}$
+          \item[(ii)] $\displaystyle\lim_{n\to\infty} b_n = \lim_{n\to\infty} \frac{1}{n} = 0$
+        \end{enumerate}
+      \end{minipage}
+    \end{center}
+    so the series is convergent by the Alternating Series Test
+  \end{example}
+  \begin{example}
+    The series $\displaystyle\sum_{n=1}^{\infty} \frac{(-1)^n 3n}{4n-1}$ is alternating but
+    $$ \lim_{n\to\infty} b_n = \lim_{n\to\infty} \frac{3n}{4n-1} = \lim_{n\to\infty} \frac{3}{4-\dfrac{1}{n}} = \frac{3}{4} \neq 0 $$
+    Instead, we look at the $n$th term of the series:
+    $$ \lim_{n\to\infty} a_n = \lim_{n\to\infty} \frac{(-1)^n 3n}{4n-1} $$
+    The limit does not exist, so the series diverges by the Test for Divergence.
+  \end{example}
+  \subsection*{Estimating Sums}
+  \begin{theorem}[\textbf{Alternating Series Estimation Theorem}]
+    If $s=\sum (-1)^{n-1}b_n$ is the sum of an alternating series that satisfies
+    \begin{center}
+      (i) $0 \leq b_{n+1} \leq b_n$ \quad and \quad $\lim\limits_{n\to\infty} b_n = 0$
+    \end{center}
+    $$ |R_n| = |s-s_n| \leq b_{n+1} \leqno \hbox{then}$$
+  \end{theorem}
+  \begin{proof}\let\qed\relax
+    We know from the proof of the Alternating Series Test that $s$ lies between any two consecutive partial sums $s_n$ and $s_{n+1}$. It follows that $$ |s-s_n| \leq  |s_{n+1}-s_n| = b_{n+1}$$
+    ``The size of the error is smaller than $b_{n+1}$, which is the absolute value of the first neglected term'' (valid only for alternating series that satisfy the Alternating Series Estimation, not other theorems.
+  \end{proof}
+  \begin{example}
+    Find the sum of the series $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n}{n!}$ correct to three decimal places (By definition, $0! = 1$).
+  \end{example}
+  \begin{solution}
+    We first observe that the series is convergent by the Alternating Series Test because
+    \begin{center}
+      $$\text{(i)}\quad \frac{1}{(n+1)!} = \frac{1}{n!(n+1)} \leq \frac{1}{n!}$$
+      $$\text{(ii)}\quad 0 < \frac{1}{n!} < \frac{1}{n} \to 0 \quad \text{so } \frac{1}{n!} \to 0 \text{  as  } n \to \infty$$
+    \end{center}
+    To get a feel for how many terms we need to use in our approximation, let's write out the first few terms of the series:
+    \begin{align*}
+      s &= \frac{1}{0!} - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \frac{1}{5!} + \frac{1}{6!} - \frac{1}{7!} + \cdots \\
+        &= 1 - 1 + \tfrac{1}{2} - \tfrac{1}{6} + \tfrac{1}{24} - \tfrac{1}{120} + \tfrac{1}{720} - \tfrac{1}{5040} + \cdots
+    \end{align*}
+    $$ b_7 = \tfrac{1}{5040} < \tfrac{1}{5000} = 0.0002 \leqno\hbox{Notice that} $$
+    $$ s_n = 1 - 1 + \tfrac{1}{2} - \tfrac{1}{6} + \tfrac{1}{24} - \tfrac{1}{120} + \tfrac{1}{720} \approx 0.369056 \leqno\hbox{and} $$
+    By the Alternating Series Estimation Theorem, we know that
+    $$ |s-s_6| \leq b_7 < 0.0002 $$
+    This error of less than 0.0002 does not affect the third decimal place, so we have $$s \approx 0.368 $$
+    correct to three decimal places.
+  \end{solution}
