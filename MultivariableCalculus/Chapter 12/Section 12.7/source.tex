@@ -1,1 +1,31 @@
 \section{Strategy for Testing Series}
+  The main strategy for testing series is to classify the series according to its \textit{form}.
+  \begin{enumerate}
+    \item If the series is of the form $\sum 1/n^p$, it is a $p$-series, which we know to be convergent if $p>1$ and divergent if $p \leq 1$.
+    \item If the series has form $\sum ar^{n-1}$ or $\sum ar^{n}$, it is a geometric series, which converges is $|r|<1$ and diverges if $|r|\geq 1$. You may need to manipulate the equation to bring the series into this form.
+    \item If the series has a form that is similar to a $p$-series or a geometric series, then one of the comparison tests should be considered. In particular, if $a_n$ is a rational function or algebraic function of $n$ (involving roots of polynomials), then the series should be compared with a $p$-series (the values of $p$ should be chosen by keeping only the highest powers of $n$ in the numerator and denominator). The comparison tests apply only to series with positive terms, but if $\sum a_n$ has some negative terms, we can apply the Comparison Tests to $\sum |a_n|$ and test for absolute convergence.
+    \item If it is obvious that $\lim_{n\to\infty} \neq 0$, then use the Test for Divergence.
+    \item If the series is of the form $\sum (-1)^{n-1}b_n$ or $\sum (-1)^{n}b_n$, then the Alternating Series Test is an obvious possibility.
+    \item Series that involve factorials or other products (including a constant raised to the $n$th power) are often conveniently tested using the Ratio Test. Bear in mind that $|a_{n+1}/a_n| \to 1$ as $n\to\infty$ for all $p$-series and therefore all rational or algebraic functions of $n$. Thus, the Ratio Test should not be used for such series.
+    \item If $a_n$ is of the form $(b_n)^n$, then the Root Test may be useful.
+    \item If $a_n=f(n)$, where $\int_{1}^{\infty} f(x)\ dx$ is easily evaluated, then the Integral Test is effective (assuming the hypotheses of this test are satisfied).
+  \end{enumerate}
+  \begin{example}
+    These examples show demonstrate how to identify which test should be used.
+    \begin{enumerate}
+      \item[(a)] $\displaystyle \sum_{n=1}^{\infty} \frac{n-1}{2n+1}$ \\~\\
+      Since $a_n \to \frac{1}{2} \neq 0$ as $n\to\infty$, we should use the Test for Divergence.
+      \item[(b)] $\displaystyle \sum_{n=1}^{\infty} \frac{\sqrt{n^3 + 1}}{3n^3 + 4n^2 + 2}$ \\~\\
+      Since $a_n$ is an algebraic function of $n$, we should compare the given series with a $p$-series. The comparison series for the Limit Comparison Test is $b_n$, where
+      $$b_n = \frac{\sqrt{n^3}}{3n^3} = \frac{n^{3/2}}{3n^3} = \frac{1}{3n^{3/2}} $$
+      \item[(c)] $\displaystyle \sum_{n=1}^{\infty} ne^{-n^2}$ \\~\\
+      Since the integral $\int_{1}^{\infty} xe^{-x^2}\ dx$ is easily evaluated, we use the Integral Test. The Ratio Test also works.
+      \item[(d)] $\displaystyle \sum_{n=1}^{\infty} (-1)^n \frac{n^3}{n^4 + 1}$ \\~\\
+      Since the series is alternating, we use the Alternating Series Test.
+      \item[(e)] $\displaystyle \sum_{n=1}^{\infty} \frac{2^k}{k!}$ \\~\\
+      Since the series is involves $k!$, we use the Ratio Test.
+      \item[(f)] $\displaystyle \sum_{n=1}^{\infty} \frac{1}{2+3^n}$ \\~\\
+      Since the series is closely related to the geometric series $\sum 1/3^n$, we use the Comparison Test.
+    \end{enumerate}
+  \end{example}
+
