@@ -1,7 +1,7 @@
 \documentclass[oneside]{book}
 
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -15,5 +15,6 @@
 \begin{document}
 	\setcounter{chapter}{12}
 	\setcounter{section}{7}
+  \graphicspath{{images/}}
 	\input{source.tex}
 \end{document}

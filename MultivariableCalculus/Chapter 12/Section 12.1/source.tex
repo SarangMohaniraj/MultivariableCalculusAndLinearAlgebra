@@ -20,13 +20,13 @@
     Find a formula for the general term $a_n$ of the sequence $$\left\{\frac{3}{5},\ -\frac{4}{25},\ \frac{5}{125},\ -\frac{6}{625},\ \frac{7}{3125},\ldots\right\}$$
   \end{example}
   \begin{solution}
-    We are given the first five terms. The numerator of the fractions start at 3 and increase by 1, so the nth term will have numerator $n+1$. The demoninators are the powers of 5, so $a_n$ has denominator $5^n$. The signs of the terms alternate between positive and negative, so we need to multiply by a power of 1. The factor $(-1)^n$ means we start with a negative term, so here we use $(-1)^{n-1}$ or $(-1)^{n+1}$ because we start with a positive term. Therefore,
+    We are given the first five terms. The numerator of the fractions start at 3 and increase by 1, so the nth term will have numerator $n+1$. The denominators are the powers of 5, so $a_n$ has denominator $5^n$. The signs of the terms alternate between positive and negative, so we need to multiply by a power of 1. The factor $(-1)^n$ means we start with a negative term, so here we use $(-1)^{n-1}$ or $(-1)^{n+1}$ because we start with a positive term. Therefore,
     $$a_n=(-1)^{n-1}\frac{n+2}{5^n}$$
   \end{solution}
   \begin{definition}
     A sequence $\{a_n\}$ has the \textbf{limit} $L$ and we write
     $$\lim_{n\to\infty} a_n = L \qquad \text{or} \qquad a_n \to L\ \text{as}\ n \to \infty$$
-    if we can make the terms $a_n$ as close to $L$ as wel like by taking $n$ sufficiently large. If $lim_{n \to \infty} a_n$ exists, we say the sequence \textbf{converges} (or is \textbf{convergent}). Otherwise, we say the sequence \textbf{diverges} (or is \textbf{divergent}).
+    if we can make the terms $a_n$ as close to $L$ as we like by taking $n$ sufficiently large. If $\lim_{n \to \infty} a_n$ exists, we say the sequence \textbf{converges} (or is \textbf{convergent}). Otherwise, we say the sequence \textbf{diverges} (or is \textbf{divergent}).
   \end{definition}
   The figure below graphs examples of two sequences that have the limit $L$.
   \begin{center}
@@ -49,7 +49,7 @@
   \end{center}
   The only difference between $\lim\limits_{n \to \infty} a_n = L$ and $\lim\limits_{x \to \infty} f(x) = L$ is that $n$ is required to be an integer.
   \begin{theorem}
-    If $\lim\limits_{x \to \infty} f(x) = L$ and $f(n)=a_n$ when $n$ is an interger, then $\lim_{n \to \infty} = a_n = L$.
+    If $\lim\limits_{x \to \infty} f(x) = L$ and $f(n)=a_n$ when $n$ is an integer, then $\lim_{n \to \infty} = a_n = L$.
   \end{theorem}
   Since we know that $\lim\limits_{x \to \infty} (1/x^r)=0$ when $r>0$, we can use the previous theorem to get
   \begin{definition}
@@ -90,7 +90,7 @@
     Find $\lim\limits_{n \to \infty} \frac{n}{n+1}$.
   \end{example}
   \begin{solution}
-    Divide the numberator and denominator by the highest power of $n$ and then use the Limit Laws.
+    Divide the numerator and denominator by the highest power of $n$ and then use the Limit Laws.
     \begin{align*}
         \lim_{n \to \infty} \frac{n}{n+1} &= \lim_{n \to \infty} \frac{1}{1+\frac{1}{n}} = \frac{\lim\limits_{n \to \infty} 1}{\lim\limits_{n \to \infty}1+\lim\limits_{n \to \infty}\frac{1}{n}} \\
         &= \frac{1}{1+0}=1
@@ -100,7 +100,7 @@
     Calculate $\lim\limits_{n \to \infty} \frac{\ln n}{n}$.
   \end{example}
   \begin{solution}
-    Both the numerator and demoninator approach infinity as $n\to\infty$. We can't apply l'Hospital;s Rule directly because it applies to functions, not sequences. However, we can apply it to the related function.
+    Both the numerator and denominator approach infinity as $n\to\infty$. We can't apply l'Hospital;s Rule directly because it applies to functions, not sequences. However, we can apply it to the related function.
     \begin{equation*}
         \lim_{x \to \infty} \frac{\ln x}{x} = \lim_{x \to \infty} \frac{1/x}{1} = 0 \quad \text{so}\ \lim\limits_{n \to \infty} \frac{\ln n}{n} = 0
     \end{equation*}
@@ -115,7 +115,7 @@
     Discuss the convergence of the the sequence $a_n=n!/n^n$.
   \end{example}
   \begin{solution}
-    Both the numerator and denominator approach infinity as $n\to\infty$, but we have no corresponding functions to use l'Hospital's Rule because $x!$ is not defined when $x$ is not an integer. if we write the general forumula for the sequence, we get
+    Both the numerator and denominator approach infinity as $n\to\infty$, but we have no corresponding functions to use l'Hospital's Rule because $x!$ is not defined when $x$ is not an integer. if we write the general formula for the sequence, we get
     $$a_n = \frac{1\cdot2\cdot3\cdot\ldots\cdot n}{n\cdot n\cdot n\cdot\ldots\cdot n} = \frac{1}{n}\left(\frac{2\cdot3\cdot\ldots\cdot n}{n\cdot n\cdot n\cdot\ldots\cdot n}\right)$$
     The expression in the parenthesis is at most 1 because the numerator is less than (or equal) to the denominator, so
     $$0<a_n \leq \frac{1}{n}$$
@@ -192,3 +192,17 @@
   \begin{theorem}[Monotonic Sequence Theorem]
     Every bounded, monotonic sequence is convergent.
   \end{theorem}
+  The proof is based on the \textbf{Completeness Axiom} for the set $\mathbb{R}$ of real numbers, which says that if $S$ is a nonempty set of real numbers that has an upper bound $M$ ($x \leq M$ for all $x$ in $S$), then $S$ has a \textbf{least upper bound} $b$ (This means that $b$ is an upper bound for $S$, but if $M$ is any other upper bound, then $b \leq M$). The Completeness Axiom is an expression of the fact that there is no gap or hole in the real number line.
+  \begin{proof}\let\qed\relax
+    Suppose $\{a_n\}$ is an increasing sequence. Since $\{a_n\}$ is bounded, the set S=$\{ a_n|n \geq 1 \}$ has an upper bound. By the Completeness Axiom it has a least upper bound $L$. Given $\varepsilon > 0,\ L-\varepsilon$ is \textit{not} an upper bound for $S$ (since $L$) is the \textit{least} upper bound). Therefore
+    $$ a_N > L-\varepsilon \qquad\text{for some integer } N$$
+    But the sequence is increasing so $a_n \geq a_N$ for every $n>N$. Thus, if $n>N$ we have
+    \begin{align*}
+      a_n &> L-\varepsilon \\
+      0 &\leq L - a_n < \varepsilon
+    \end{align*}
+    since $a_n \leq L$. Thus
+    $$ |L-a_n| < \varepsilon \qquad\text{whenever } n > N $$
+    so $\lim_{n\to\infty} a_n = L$.\par
+    A similar proof (using the greatest lower bound) works if $\{a_n\}$ is decreasing.
+  \end{proof}
