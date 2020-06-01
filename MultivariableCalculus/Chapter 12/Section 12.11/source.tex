@@ -1,1 +1,66 @@
 \section{The Binomial Series}
+  The \textbf{Binomial Theorem} states that if $a$ and $b$ are any real numbers and $k$ is a positive integer, then
+  \begin{equation*}
+    \begin{split}
+      (a+b)^k = a^k &+ ka^{k-1}b + \frac{k(k-1)}{2!}a^{k-2}b^2 + \frac{k(k-1)(k-2)}{3!}a^{k-3}b^3 \\
+      &+ \cdots + \frac{k(k-1)(k-2) \cdots (k-n+1)}{n!}a^{k-n}b^n \\
+      &+ \cdots + kab^{k-1}+b^k
+    \end{split}
+  \end{equation*}
+  The traditional notation for the binomial coefficients is
+  $$ \binom{k}{0} = 1 \qquad \binom{k}{n} = \frac{k(k-1)(k-2) \cdots (k-n+1)}{n!} \qquad n=1,2,\ldots,k $$
+  which enables us to write the Binomial Theorem in the abbreviated form
+  $$ (a+b)^k = \sum_{n=0}^{k} \binom{k}{n} a^{k-n}b^n $$
+  \begin{definition}[\textbf{The Binomial Series}]
+    If $k$ is any real number and $|x|<1$, then
+    \begin{align*}
+      (1+x)^k &= 1 + kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \cdots \\
+      &= \sum_{n=0}^{\infty} \binom{k}{n} x^n
+    \end{align*}
+    where $\displaystyle\binom{k}{n} = \frac{k(k-1) \cdots (k-n+1)}{n!} \quad (n \geq 1)$ and $\displaystyle\binom{k}{0} = 1$
+  \end{definition}
+  \begin{proof}\let\qed\relax
+    Newton extended the Binomial Theorem to the case in which $k$ is no longer a positive integer. In particular, if we put $a=1$ and $b=k$, we get
+    $$(1+x)^k = \sum_{n=0}^{\infty} \binom{k}{n} x^n$$
+    To find this series we compute the Maclaurin series of $(1+x)^k$ in the usual way.
+    \begin{equation*}
+      \begin{aligned}[c]
+        f(x) &= (1+x)^k \\
+        f'(x) &= k(1+x)^{k-1} \\
+        f''(x) &= k(k-1)(1+x)^{k-2} \\
+        f'''(x) &= k(k-1)(k-2)(1+x)^{k-3} \\
+        \vdots \\
+        f^{(n)}(x) &= k(k-1) \cdots (k-n+1)(1+x)^{k-n}
+      \end{aligned}
+      \qquad
+      \begin{aligned}[c]
+        f(0) &= 1 \\
+        f'(0) &= k \\
+        f''(0) &= k(k-1) \\
+        f'''(0) &= k(k-1)(k-2) \\
+        \vdots \\
+        f^{(n)}(0) &= k(k-1) \cdots (k-n+1)
+      \end{aligned}
+    \end{equation*}
+    Therefore the Maclaurin series of $f(x) = (1+x)^k$ is
+    $$\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n = \sum_{n=0}^{\infty} \frac{k(k-1) \cdots (k-n+1)}{n!}x^n$$
+    Now we use the Ratio Test to test the binomial series for convergence. If the $n$th term is $a_n$, then
+    \begin{align*}
+      \left| \frac{a_{n+1}}{a_n} \right| &= \left| \frac{k(k-1) \cdots (k-n+1)(k-n)x^{n+1}}{(n+1)!} \cdot \frac{n!}{k(k-1) \cdots (k-n+1)x^n} \right| \\
+      &= \frac{|k-n|}{x+1}|x| = \frac{\left| 1 - \dfrac{k}{n} \right|}{ 1 + \dfrac{1}{n}}|x| \to |x| \quad \text{as } n\to\infty
+    \end{align*}
+    The binomial series converges if $|x|<1$ and diverges if $|x|>1$ by the Ratio Test.
+  \end{proof}
+  \begin{example}
+    Expand $\dfrac{1}{(1+x)^2}$ as a power series.
+  \end{example}
+  \begin{solution}
+    Use the binomial series with $k=2$. The binomial coefficient is
+    \begin{align*}
+      \binom{-2}{n} &= \frac{(-2)(-3)(-4)\cdots(-2-n+1)}{n!} \\
+      &= \frac{(-1)^n 2\cdot3\cdot4\cdot\ldots\cdot n(n+1)}{n!} = (-1)^n(n+1)
+      \intertext{and so, when $|x|<1$,}
+      \frac{1}{(1+x)^2} &= (1+x)^{-2} = \sum_{n=0}^{\infty} \binom{-2}{n} x^n \\
+      &= \sum_{n=0}^{\infty} (-1)^n(n+1)x^n = 1-2x+3x^2-4x^3 + \cdots
+    \end{align*}
+  \end{solution}
