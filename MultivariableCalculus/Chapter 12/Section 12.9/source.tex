@@ -1,1 +1,96 @@
 \section{Representation of Functions as Power Series}
+  In this section we learn how to represent certain types of functions as sums of power series by manipulating geometric series or by differentiating or integrating such a series.
+  \begin{example}
+    Express $\dfrac{1}{1+x^2}$ as the sum of a power series and find the interval of convergence.
+  \end{example}
+  \begin{solution}
+    Replace $x$ with $-x^2$.
+    \begin{align*}
+      \frac{1}{1+x^2} &= \frac{1}{1-(-x^2)} = \sum_{n=0}^{\infty} (-x^2)^n \\
+      &= \sum_{n=0}^{\infty} (-1)^n x^{2n} = 1-x^2 + x^4 - x^6 + x^8 - \cdots
+    \end{align*}
+    Because this is a geometric series, it converges when $|x^2|<1$, which is the same as $x^2<1$ or $|x|<1$. Therefore, the interval of convergence is $(-1,1)$.
+  \end{solution}
+  \subsection*{Differentiation and Integration of Power Series}
+    The sum of a power series is a function $f(x) = \sum_{n=0}^{\infty} c_n (x-a)^n$ whose domain is the interval of convergence of the series. We would like to be able to differentiate and inte- grate such functions, and the following theorem says that we can do so by differentiating or integrating each individual term in the series, just as we would for a polynomial. This is called \textbf{term-by-term differentiation and integration}.
+    \begin{theorem}
+      If the power series $\sum c_n (x-a)^n$ has radius of convergence $R>0$, then the function $f$ defined by
+      $$ f(x) = c_0 + c_1(x-2) + c_2(x-2)^2 + \cdots = \sum_{n=0}^{\infty} c_n(x-a)^n $$
+      is differentiable (and therefore continuous) on the interval $(a-R,\ a+R)$ and
+      \begin{enumerate}
+        \item[(i)] $f'(x) = c_1 + 2c_2 (x-a) + 3c_3 (x-a)^2 + \cdots = \sum_{n=0}^{\infty} nc_n (x-a)^{n-1}$
+        \item[(i)]
+        $\begin{aligned}[t]
+          \int f(x)\ dx &= C + c_0 (x-a) + c_1 \frac{(x-a)^2}{2} + c_2 \frac{(x-a)^3}{3} + \cdots \\
+                        &= C + \sum_{n=0}^{\infty} c_n \frac{(x-a)^{n+1}}{n+1}
+        \end{aligned}$
+      \end{enumerate}
+      The radii of convergence of the power series in both equations are $R$.
+    \end{theorem}
+    \begin{minipage}{\textwidth}
+    \textsc{Note} The equations can be rewritten in the form
+      \begin{enumerate}
+        \item[(i)] $\displaystyle \frac{d}{dx} \left[ \sum_{n=0}^{\infty} c_n(x-a)^n \right] = \sum_{n=0}^{\infty} \frac{d}{dx} [c_n(x-a)^n]$
+        \item[(ii)] $\displaystyle \int \left[ \sum_{n=0}^{\infty} c_n(x-a)^n \right]dx = \sum_{n=0}^{\infty} \int [c_n(x-a)^n]\ dx$
+      \end{enumerate}
+    \end{minipage}
+    \begin{example}
+      Express $\dfrac{1}{(1-x)^2}$ as a power series by differenting the sum of a geometric series.
+    \end{example}
+    \begin{solution}
+      Differentiate both sides of the equation
+      \begin{align*}
+        \frac{1}{1-x} &= 1 + x + x^2 + x^3 + \cdots = \sum_{n=0}^{\infty} x^n \\
+        \frac{1}{(1-x)^2} &= 1 + 2x + 3x^2 + \cdots = \sum_{n=0}^{\infty} nx^{n-1}
+      \end{align*}
+      If we wish, we can replace $n$ by $n+1$ and write the answer as
+      $$  \frac{1}{(1-x)^2} = \sum_{n=0}^{\infty} (n+1) x^n $$
+      The radius of convergence of the differentiated series is the same as the radius of convergence of the original series, so $R=1$.
+    \end{solution}
+    \begin{example}
+      FInd a power series representation for $\ln (1-x)$ and its radius of convergence.
+    \end{example}
+    \begin{solution}
+      We notice that, besides from a factor of -1, the derivitive of this function is $1/(1-x)$. So we integrate both sides of the equation:
+      \begin{align*}
+        -\ln (1-x) &= \int \frac{1}{1-x}\ dx = \int (1+x+x^2+\cdots)\ dx \\
+        &= x + \frac{x^2}{2} + \frac{x^3}{3} + \cdots + C = \sum_{n=0}^{\infty} \frac{x^{n+1}}{n+1} + C \\
+        &= \sum_{n=1}^{\infty} \frac{x^n}{n} + C  \qquad |x|<1
+      \end{align*}
+      To determine the value of $C$, we plug in $x=0$ into the equation and get $-\ln (1-0) = C$, so $C=0$ and
+      $$ \ln (1-x) = -x - \frac{x^2}{2} - \frac{x^3}{3} - \cdots = \sum_{n=1}^{\infty} \frac{x^n}{n} \qquad |x|<1 $$
+      The radius of convergence is the same as the original series: $R=1$.
+    \end{solution}
+    \begin{example}
+      \hphantom{ }\\
+      \begin{enumerate}
+        \item[(a)] Evaluate $\displaystyle \int \frac{1}{1+x^7}\ dx$ as a power series.
+        \item[(b)] Use part (a) to approximate $\displaystyle \int_{0}^{0.5} \frac{1}{1+x^7}\ dx$ correct to within $10^{-7}$.
+      \end{enumerate}
+    \end{example}
+    \begin{solution}
+      \hphantom{ }\\
+      \begin{enumerate}
+        \item[(a)] First express the integrand, $\dfrac{1}{1+x^7}$, as the sum of apower series. We start with the sum of a geometric series and replace it $x$ with $-x^7$.
+        \begin{align*}
+          \frac{1}{1+x^7} &= \frac{1}{1-(-x^7)} = \sum_{n=0}^{\infty} (-x^7)^n \\
+          &= \sum_{n=0}^{\infty} (-1)^n x^{7n} = 1 - x^7 + x^{14} - \cdots
+        \end{align*}
+        Now we integrate by term:
+        \begin{align*}
+          \int \frac{1}{1+x^7}\ dx &= \int \sum_{n=0}^{\infty} (-1)^n x^{7n}\ dx = C + \sum_{n=0}^{\infty} (-1)^n \frac{x^{7n+1}}{7n+1} \\
+          &= C+ x - \frac{x^8}{8} + \frac{x^{15}}{15} - \frac{x^{22}}{22} + \cdots
+        \end{align*}
+        THe series converges for $|-x^7|<1$ which is the same as $|x|<1$.
+        \item[(b)] We apply the Fundamental Theorem of Calculus to the antiderivative from part (a) with $C=0$:
+        \begin{align*}
+          \int_{0}^{0.5} \frac{1}{1+x^7}\ dx &= \left[ - \frac{x^8}{8} + \frac{x^{15}}{15} - \frac{x^{22}}{22} + \cdots \right]_{0}^{1/2} \\
+          &= \frac{1}{2} - \frac{1}{8 \cdot 2^8} + \frac{1}{15 \cdot 2^{15}} - \frac{1}{22 \cdot 2^{22}} + \cdots + \frac{(-1)^n}{(7n+1)2^{7n+1}} + \cdots
+        \end{align*}
+        This infinite series is the exact value of the definite integral, but since it is an alternating series, we can approximate the sum using the Alternating Series Estimation Theorem. If we stop adding after the term $n=3$, the error is smaller than the term with $n=4$:
+        $$\frac{1}{29 \cdot 2^29} \approx 6.4 \times 10^{-11} $$
+        So we have
+        $$ \int_{0}^{0.5} \frac{1}{1+x^7}\ dx \approx \frac{1}{2} - \frac{1}{8 \cdot 2^8} + \frac{1}{15 \cdot 2^{15}} - \frac{1}{22 \cdot 2^{22}} \approx 0.49951374 $$
+      \end{enumerate}
+    \end{solution}
+
