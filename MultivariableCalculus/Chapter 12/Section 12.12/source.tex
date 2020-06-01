@@ -1,1 +1,56 @@
 \section{Applications of Taylor Polynomials}
+  Two applications of Taylor polynomials are to approximate functions and use them in physics.
+  \subsection*{Approximating Functions by Polynomials}
+    In section 12.10, we introduced the notion for $T_n (x)$ for the $n$th partial sum of this series. Since $f$ is the sum of its Taylor series, we know that $T_n (x) \to \infty$ as $n\to\infty$ so $T_n$ can be used as an approximation to $f$: $f(x) \approx T_n (x)$.\par
+    When using a Taylor polynomial $T_n$ to approximate a function $f$, we have to ask the questions: How good an approximation is it? How large should we take n to be in order to achieve a desired accuracy? To answer these questions we need to look at the absolute value of the remainder:
+    $$|R_n (x)| = |f(x) - T_n (x)|$$
+    There are three possible methods for estimating the size of the error:
+    \begin{enumerate}
+      \item If a graphing device is available, we can use it to graph $|R_n (x)|$ and thereby graphing the error.
+      \item If the series happens to be an alternating series, we can use the Alternating Series Estimation Theorem.
+      \item In all cases we can use Taylor's Inequality, which says that if $|f^{(n+1)}(x)| \leq M$, then
+      $$|R_n (x)| \leq \frac{M}{(n+1)!}|x-a|^{n+1}$$
+    \end{enumerate}
+    \begin{example}
+      \hphantom{ }\\
+      \begin{enumerate}
+        \item[(a)] Approximate the function $f(x) = \sqrt[3]{x}$ by a Taylor polynomial of degree 2 at $a=8$.
+        \item[(b)] How accurate is this approximation when $7 \leq x \leq 9$?
+      \end{enumerate}
+    \end{example}
+    \begin{solution}
+      \hphantom{ }\\
+      \begin{enumerate}
+        \item[(a)]
+          \begin{equation*}
+            \begin{aligned}[c]
+              f(x) &= \sqrt[3]{x}= x^{1/3} \\
+              f'(x) &= \tfrac{1}{3}x^{-2/3} \\
+              f''(x) &= -\tfrac{2}{9}x^{-5/3} \\
+              f'''(x) &= \tfrac{10}{27}x^{-8/3}
+            \end{aligned}
+            \qquad\qquad
+            \begin{aligned}[c]
+              f(8) &= 2 \\
+              f'(8) &= \tfrac{1}{12} \\
+              f'(8) &= -\tfrac{1}{144} \\
+              \hphantom{ }
+            \end{aligned}
+          \end{equation*}
+          \begin{align*}
+            \intertext{Thus, the second-degree Taylor polynomial is}
+            T_2 (x) &= f(8) + \frac{f'(8)}{1!}(x-8) + \frac{f'(8)}{2!}(x-8)^2 \\
+            &= 2 + \tfrac{1}{12}(x-8) - \tfrac{1}{288}(x-8)^2
+            \intertext{The desired approximation is}
+            \sqrt[3]{x} &\approx T_2 (x) = 2 + \tfrac{1}{12}(x-8) - \tfrac{1}{288}(x-8)^2
+          \end{align*}
+
+        \item[(b)] The Taylor series is not alternating when $x<8$, so we can't use the Alternating Series Estimation Theorem, but we can use Taylor's Inequality with $n=2$ and $a=8$:
+        $$|R_2 (x)| \leq \frac{M}{3!}|x-8|^{3}$$
+        where $|f'''(x)| \leq M$. Because $x \geq 7$, we have $x^{8/3} \geq 7^{8/3}$ and so
+        $$f'''(x) = \frac{10}{27} \cdot \frac{1}{x^{8/3}} \leq \frac{10}{27} \cdot \frac{1}{7^{8/3}} < 0.0021$$
+        Therefore, we can take $M=0.0021$. Also $7 \leq x \leq 9$ so $-1 \leq x-8 \leq 1$ and $|x-8| \leq 1$. Taylor's inequality gives
+        $$|R_2 (x)| \leq \frac{0.0021}{3!}\cdot 1^3 = \frac{0.0021}{6} \leq 0.0004$$
+        Thus, if $7 \leq x \leq 9$, the approximation in part (a) is accurate to within 0.0004.
+      \end{enumerate}
+    \end{solution}
